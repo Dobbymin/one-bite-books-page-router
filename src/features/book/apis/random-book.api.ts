@@ -1,6 +1,6 @@
 import { BASE_URL } from '@/shared';
 
-import { BookData } from './../types';
+import { BookData } from '@/shared';
 
 export const RANDOM_BOOK_API_PATH = `${BASE_URL}/book/random`;
 
