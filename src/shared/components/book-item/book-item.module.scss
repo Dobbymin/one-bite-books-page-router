@@ -6,6 +6,10 @@
   color: black;
   text-decoration: none;
 
+  &:last-child {
+    border-bottom: none;
+  }
+
   img {
     width: 80px;
   }
