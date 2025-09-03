@@ -1,9 +1,10 @@
 import { Geist, Geist_Mono } from 'next/font/google';
 
-import { SearchbarLayout } from '@/features';
-import { BookItemSection } from '@/features/book';
+import { AllBooksSection, RandomBooksSection, SearchbarLayout } from '@/features';
 import { bookAPI, randomBookAPI } from '@/features/book/apis';
 import { InferGetServerSidePropsType } from 'next';
+
+import style from './index.module.scss';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -25,12 +26,13 @@ export const getServerSideProps = async () => {
 };
 
 export default function Home({
-  allBooks,
   randomBooks,
+  allBooks,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
-    <div>
-      <BookItemSection allBooks={allBooks} randomBooks={randomBooks} />
+    <div className={style.container}>
+      <RandomBooksSection randomBooks={randomBooks} />
+      <AllBooksSection allBooks={allBooks} />
     </div>
   );
 }
