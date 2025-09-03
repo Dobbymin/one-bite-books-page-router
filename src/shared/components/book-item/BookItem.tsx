@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { BookData } from '../../types';
 import style from './book-item.module.scss';
+import { BookData } from '@/shared';
 
 type Props = BookData;
 
