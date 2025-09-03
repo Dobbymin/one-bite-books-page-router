@@ -1,4 +1,6 @@
-export const BOOKS_MOCK_DATA = [
+import { BookData } from '@/shared';
+
+export const BOOKS_MOCK_DATA: BookData[] = [
   {
     id: 1,
     title: '한 입 크기로 잘라 먹는 리액트',
