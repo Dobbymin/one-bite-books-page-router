@@ -1,9 +1,20 @@
-import { BOOKS_MOCK_DATA } from '@/features/book';
+import { detailBookAPI } from '@/features';
 import style from './[id].module.scss';
 import React from 'react';
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 
-export default function BookPage() {
-  const { id, title, subTitle, description, author, publisher, coverImgUrl } = BOOKS_MOCK_DATA[0];
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+  const id = context.params!.id;
+
+  const book = await detailBookAPI(Number(id));
+
+  return { props: { book } };
+};
+
+export default function BookPage({ book }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  if (!book) return <div>책 정보가 없습니다.</div>;
+
+  const { id, title, subTitle, description, author, publisher, coverImgUrl } = book;
 
   return (
     <div className={style.container}>
