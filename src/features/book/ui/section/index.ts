@@ -1,1 +1,2 @@
-export * from './BookItemSection';
+export * from './RandomBooksSection';
+export * from './AllBooksSection';
