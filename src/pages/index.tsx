@@ -5,6 +5,7 @@ import { bookAPI, randomBookAPI } from '@/features/book/apis';
 import { InferGetServerSidePropsType } from 'next';
 
 import style from './index.module.scss';
+import Head from 'next/head';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -30,10 +31,18 @@ export default function Home({
   allBooks,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
-    <div className={style.container}>
-      <RandomBooksSection randomBooks={randomBooks} />
-      <AllBooksSection allBooks={allBooks} />
-    </div>
+    <>
+      <Head>
+        <title>한입북스</title>
+        <meta property='og:title' content='한입북스 - 검색결과' />
+        <meta property='og:description' content='한입북스에 등록된 도서들을 만나보세요' />
+        <meta property='og:image' content='/thumbnail.png' />
+      </Head>
+      <div className={style.container}>
+        <RandomBooksSection randomBooks={randomBooks} />
+        <AllBooksSection allBooks={allBooks} />
+      </div>
+    </>
   );
 }
 
