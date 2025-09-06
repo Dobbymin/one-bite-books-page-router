@@ -1,5 +1,4 @@
-import { BASE_URL } from '@/shared';
-import { BookData } from '@/shared';
+import { BASE_URL, BookData } from '@/shared';
 
 const SEARCH_BOOK_API_PATH = `${BASE_URL}/book/search`;
 
@@ -12,7 +11,7 @@ export const searchBookAPI = async (q?: string): Promise<SearchBookResponse> => 
       url.searchParams.append('q', q);
     }
 
-    const response = await fetch(url.toString());
+    const response = await fetch(String(url));
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
